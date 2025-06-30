@@ -1,0 +1,25 @@
+name: CI Básico
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar archivos
+        run: |
+          echo "✅ Validando estructura del proyecto..."
+          ls -la
+          if [ -f "index.html" ]; then
+            echo "✔️ index.html existe"
+          else
+            echo "❌ Falta index.html"
+            exit 1
+          fi
+          if [ -f "main.js" ]; then
+            echo "✔️ main.js existe"
+          else
+            echo "❌ Falta main.js"
+            exit 1
+          fi
